@@ -2,6 +2,7 @@ import cv2
 import numpy
 import datetime
 import json
+import requests
 from watson_developer_cloud import VisualRecognitionV3
 from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -114,7 +115,8 @@ while(cap.isOpened()):
                 new_document = my_database.create_document(json_document)
                 if new_document.exists():
                     print(f"Document '{json_document}' successfully created.")
-
+                x=requests.get("https://www.fast2sms.com/dev/bulk?authorization=AFfgEkvJLxUHceChaq5pNQs4jKnG1Zl26VOu0YoSdiBy83X7tbfAgIvlrVmeK0Tt7UoPQHhD24Cqw8LE&sender_id=FSTSMS&message=Animal Detected&language=english&route=p&numbers=7702583858")
+                print(x.text)
 
     if k==ord('q'):
         cap.release()
